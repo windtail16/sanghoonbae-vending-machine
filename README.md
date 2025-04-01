@@ -34,7 +34,7 @@ ts v5.7.2
 - Vite
 
 ## 🏗️ 프로젝트 구조
-tree
+bash
 src/
 ├── App.tsx # 메인 컴포넌트
 ├── App.css # 스타일링
@@ -43,14 +43,15 @@ src/
 └── main.tsx # 진입점
 
 ## 🔄 상태 관리
+
 typescript
 interface VendingMachineState {
-insertedMoney: number; // 투입된 금액
-selectedDrink: Drink | null;// 선택된 음료
-paymentMethod: PaymentMethod | null; // 결제 방법
-purchaseStatus: 'IDLE' | 'PROCESSING' | 'SUCCESS' | 'ERROR'; // 구매 상태
-message: string; // 결과 메시지
-walletAmount: number; // 지갑 잔액
+  insertedMoney: number; // 투입된 금액
+  selectedDrink: Drink | null;// 선택된 음료
+  paymentMethod: PaymentMethod | null; // 결제 방법
+  purchaseStatus: 'IDLE' | 'PROCESSING' | 'SUCCESS' | 'ERROR'; // 구매 상태
+  message: string; // 결과 메시지
+  walletAmount: number; // 지갑 잔액
 }
 
 ## 🚦 프로세스 흐름
