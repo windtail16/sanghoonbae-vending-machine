@@ -15,6 +15,7 @@ function App() {
     walletAmount: 100000,
   });
 
+  // 음료 선택
   const handleDrinkSelect = (drink: Drink) => {
     if (drink.stock === 0) {
       setState(prev => ({
@@ -27,10 +28,12 @@ function App() {
     setState(prev => ({ ...prev, selectedDrink: drink }));
   };
 
+  // 결제 방법 선택
   const handlePaymentMethodSelect = (method: PaymentMethod) => {
     setState(prev => ({ ...prev, paymentMethod: method }));
   };
 
+  // 현금 투입
   const handleCashInsert = (amount: number) => {
     if (amount > state.walletAmount) {
       setState(prev => ({
@@ -47,6 +50,8 @@ function App() {
     }));
   };
 
+
+  // 구매 프로세스
   const handlePurchase = () => {
     if (!state.selectedDrink) {
       setState(prev => ({
@@ -103,6 +108,7 @@ function App() {
     }
   };
 
+  // 초기화
   const resetState = () => {
     setState(prev => ({
       insertedMoney: 0,
@@ -176,8 +182,6 @@ function App() {
                 카드
               </button>
             </div>
-            
-
             <div className="cash-section">
               <div className="lcd-display">
                 <span>
@@ -202,32 +206,26 @@ function App() {
                 </button>
               </div>
             )}
-            
           </div>
-          
         </div>
       </div>
-      
-      
-        <div className="my-wallet-wrap">
-          <h2>지갑</h2>
-          <p className="wallet-amount">잔액: {state.walletAmount}원</p>
-          {state.paymentMethod === 'CASH' && (
-          <div className="button-wrap">
-            {AVAILABLE_CASH.map(amount => (
-              <button 
-                key={amount} 
-                onClick={() => handleCashInsert(amount)}
-                disabled={amount > state.walletAmount}
-              >
-                {amount}원
-              </button>
-            ))}
-          </div>
-          )}
+      <div className="my-wallet-wrap">
+        <h2>지갑</h2>
+        <p className="wallet-amount">잔액: {state.walletAmount}원</p>
+        {state.paymentMethod === 'CASH' && (
+        <div className="button-wrap">
+          {AVAILABLE_CASH.map(amount => (
+            <button 
+              key={amount} 
+              onClick={() => handleCashInsert(amount)}
+              disabled={amount > state.walletAmount}
+            >
+              {amount}원
+            </button>
+          ))}
         </div>
-      
-      
+        )}
+      </div>
     </>
   );
 }

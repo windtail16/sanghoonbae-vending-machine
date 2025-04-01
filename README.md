@@ -1,54 +1,81 @@
+# 자판기 프로젝트
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React와 TypeScript를 사용하여 구현한 음료 자판기 프로젝트입니다.
+node v21.6.2
+react v19.0.0
+ts v5.7.2
 
-Currently, two official plugins are available:
+## 🚀 기능
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 음료 선택
+- 콜라 (1,100원)
+- 물 (600원)
+- 커피 (700원)
+- 각 음료별 재고 관리
+- 매진된 음료는 선택 불가
 
-## Expanding the ESLint configuration
+### 결제 수단
+- 현금 결제
+  - 지원 화폐: 100원, 500원, 1,000원, 5,000원
+  - 거스름돈 자동 계산
+- 카드 결제
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 지갑 기능
+- 초기 금액: 100,000원
+- 현금 투입 시 잔액 자동 계산
+- 거스름돈 반환 시 잔액에 추가
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 💻 기술 스택
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- React
+- TypeScript
+- CSS
+- Vite
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🏗️ 프로젝트 구조
+tree
+src/
+├── App.tsx # 메인 컴포넌트
+├── App.css # 스타일링
+├── types.ts # 타입 정의
+├── constants.ts # 상수 정의
+└── main.tsx # 진입점
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 🔄 상태 관리
+typescript
+interface VendingMachineState {
+insertedMoney: number; // 투입된 금액
+selectedDrink: Drink | null;// 선택된 음료
+paymentMethod: PaymentMethod | null; // 결제 방법
+purchaseStatus: 'IDLE' | 'PROCESSING' | 'SUCCESS' | 'ERROR'; // 구매 상태
+message: string; // 결과 메시지
+walletAmount: number; // 지갑 잔액
+}
+
+## 🚦 프로세스 흐름
+1. 음료 선택
+2. 결제 방법 선택 (현금/카드)
+3. 현금 결제 시
+   - 금액 투입
+   - 거스름돈 계산
+   - 지갑 잔액 업데이트
+4. 구매 완료
+   - 재고 감소
+   - 결과 메시지 표시
+   - 상태 초기화 옵션
+
+## 🛠️ 설치 및 실행
+bash
+프로젝트 클론
+git clone https://github.com/windtail16/sanghoonbae-vending-machine.git
+의존성 설치
+npm install
+개발 서버 실행
+npm run dev
+빌드
+npm run build
+
+
+## 📝 라이선스
+MIT License
