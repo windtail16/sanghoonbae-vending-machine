@@ -34,17 +34,17 @@ ts v5.7.2
 - Vite
 
 ## 🏗️ 프로젝트 구조
-bash
+```bash
 src/
 ├── App.tsx # 메인 컴포넌트
 ├── App.css # 스타일링
 ├── types.ts # 타입 정의
 ├── constants.ts # 상수 정의
 └── main.tsx # 진입점
+```
 
 ## 🔄 상태 관리
-
-typescript
+```typescript
 interface VendingMachineState {
   insertedMoney: number; // 투입된 금액
   selectedDrink: Drink | null;// 선택된 음료
@@ -53,6 +53,7 @@ interface VendingMachineState {
   message: string; // 결과 메시지
   walletAmount: number; // 지갑 잔액
 }
+```
 
 ## 🚦 프로세스 흐름
 1. 음료 선택
@@ -69,14 +70,24 @@ interface VendingMachineState {
 ## 🛠️ 설치 및 실행
 bash
 프로젝트 클론
+```bash
 git clone https://github.com/windtail16/sanghoonbae-vending-machine.git
-의존성 설치
-npm install
-개발 서버 실행
-npm run dev
-빌드
-npm run build
+```
 
+의존성 설치
+```bash
+npm install
+```
+
+개발 서버 실행
+```bash
+npm run dev
+```
+
+빌드
+```bash
+npm run build
+```
 
 ## 📝 라이선스
 MIT License
